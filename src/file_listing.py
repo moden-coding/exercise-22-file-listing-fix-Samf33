@@ -6,7 +6,15 @@ import re
 
 
 def file_listing(filename="src/listing.txt"):
-    pass
+    dda = []
+    with open(filename, "r") as f:
+        for line in f:
+            finding = re.findall(r'-all\s*(\d*)\s(.{3})\s*(\d*)\s(\d*):(\d*)\s(.*)', line)
+            fixed = (int(finding[0][0]), finding[0][1], int(finding[0][2]), int(finding[0][3]), int(finding[0][4]), finding[0][5])
+            print(fixed)
+            dda.append(fixed)
+    print(dda)
+    return dda
 
 def main():
     file_listing()
